@@ -19,11 +19,13 @@ function makeNewBook() {
   bookForm.elements["btitle"].focus();
 }
 
-function Book(title, author, description, read) {
-  this.title = title;
-  this.author = author;
-  this.description = description;
-  this.read = read;
+class Book {
+  constructor(title, author, description, read) {
+    this.title = title;
+    this.author = author;
+    this.description = description;
+    this.read = read;
+  }
 }
 
 Book.prototype.toggleRead = function() {
