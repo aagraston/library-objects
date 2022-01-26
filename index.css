@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+}
+
+body * {
+  margin: 0;
+}
+
+
+.button-container {
+  margin: 20px;
+}
+
+.books-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.book {
+  flex: 0 1 25%;
+  border-radius: 10px;
+  background-color: rgb(110, 40, 40);
+  color: white;
+  padding: 20px;
+  margin: 20px;
+}
+
+.new-book-form-container {
+  display: none; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background: rgb(199, 199, 199);
+  padding: 30px;
+  max-width: 600px;
+}
+
+.show-form {
+  display: block;
+}
+
+p {
+  margin: 10px 0px 0px 0px;
+}
+
+
+form {
+  justify-content: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
