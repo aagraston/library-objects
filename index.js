@@ -14,6 +14,18 @@ bookForm.elements["bsubmit"].addEventListener('click', parseFormData);
 
 let myLibrary = [];
 
+bookForm.elements["btitle"].addEventListener('input', checkInputValid);
+
+bookForm.elements["bauthor"].addEventListener('input', checkInputValid);
+
+bookForm.elements["bdescription"].addEventListener('input', checkInputValid);
+
+
+function checkInputValid(event) {
+event.target.setCustomValidity('');
+event.target.checkValidity();
+}
+
 //array that houses books
 
 function makeNewBook() {
@@ -61,6 +73,7 @@ function parseFormData(e) {
   if (bookForm.elements["bread"].checked) {
     bookIsRead = "true";
   }
+  
   if (runValidationCheck()) {
     let bookToAdd = new Book(
       bookForm.elements["btitle"].value,
@@ -73,17 +86,30 @@ function parseFormData(e) {
     bookForm.reset();
     bookFormContainer.classList.toggle('show-form')
   }
-
-  
 }
 
 function runValidationCheck() {
-  let retBool = false;
-  let errorMsg = "";
-
-  if (bookForm.validity.valueMissing) {
-
+let retBool = false;
+  if (bookForm.elements["btitle"].checkValidity()) {
+    if (bookForm.elements["bauthor"].checkValidity()) {
+      if (bookForm.elements["bdescription"].checkValidity()) {
+        retBool = true;
+      }
+      else {
+        bookForm.elements["bdescription"].setCustomValidity('This needs a book description');
+        bookForm.elements["bdescription"].reportValidity();
+      }
+    }
+    else {
+      bookForm.elements["bauthor"].setCustomValidity('This needs a book author');
+      bookForm.elements["bauthor"].reportValidity();
+    }
   }
+  else {
+    bookForm.elements["btitle"].setCustomValidity('This needs a book title');
+    bookForm.elements["btitle"].reportValidity();
+  }
+  return retBool;
 }
 
 function addBookToLibrary(bookToAdd) {

@@ -63,3 +63,14 @@ form {
   flex-wrap: wrap;
   gap: 16px;
 }
+
+/* section for error input styling */
+
+input:invalid {
+  border-color: #900;
+  background-color: #FDD;
+}
+
+input:focus:invalid {
+  outline: none;
+}
