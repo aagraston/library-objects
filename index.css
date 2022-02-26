@@ -42,6 +42,15 @@ body * {
   display: block;
 }
 
+.error-message-div {
+  position: absolute;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+  
+}
+
 p {
   margin: 10px 0px 0px 0px;
 }

@@ -7,6 +7,8 @@ const createButton = document.querySelector('#create-book');
 const bookFormContainer = document.querySelector('.new-book-form-container');
 const bookForm = document.querySelector('#book-form');
 
+const errorDiv = document.querySelector('.error-message-div');
+
 createButton.addEventListener('click', makeNewBook);
 bookForm.elements["bsubmit"].addEventListener('click', parseFormData);
 
@@ -59,16 +61,29 @@ function parseFormData(e) {
   if (bookForm.elements["bread"].checked) {
     bookIsRead = "true";
   }
-  let bookToAdd = new Book(
-    bookForm.elements["btitle"].value,
-    bookForm.elements["bauthor"].value,
-    bookForm.elements["bdescription"].value,
-    bookIsRead);
+  if (runValidationCheck()) {
+    let bookToAdd = new Book(
+      bookForm.elements["btitle"].value,
+      bookForm.elements["bauthor"].value,
+      bookForm.elements["bdescription"].value,
+      bookIsRead);
 
-  addBookToLibrary(bookToAdd);
+      addBookToLibrary(bookToAdd);
 
-  bookForm.reset();
-  bookFormContainer.classList.toggle('show-form')
+    bookForm.reset();
+    bookFormContainer.classList.toggle('show-form')
+  }
+
+  
+}
+
+function runValidationCheck() {
+  let retBool = false;
+  let errorMsg = "";
+
+  if (bookForm.validity.valueMissing) {
+
+  }
 }
 
 function addBookToLibrary(bookToAdd) {
